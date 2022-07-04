@@ -3,7 +3,6 @@
 	"Lang": "ru",
 	"DebugLog": false,
 	"ВерсияVA": "ver 1.2.039.1",
-	"КаталогФич": "\\\\files\\groups\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\vanessa-automation\\features\\Libraries\\UITestRunner\\ОткрытьTestClientExport.feature",
 	"ДобавлятьКИмениСценарияУсловияВыгрузки": false,
 	"ЗаписыватьВидеоВыполненияТестов": false,
 	"КоличествоКадровВидеоВыполненияТестов": 5,
@@ -104,7 +103,8 @@
 	},
 	"ДелатьОтчетВоВнутреннемФормате": false,
 	"КаталогиБиблиотек": [
-		"\\\\files\\groups\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\vanessa-automation\\features\\Libraries"
+		"X:\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\vanessa-automation\\features\\Libraries",
+		"X:\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\src\\lib"
 	],
 	"СписокТеговИсключение": [
 		"IgnoreOnCIMainBuild"
