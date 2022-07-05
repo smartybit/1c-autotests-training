@@ -7,7 +7,7 @@
 	"ЗаписыватьВидеоВыполненияТестов": false,
 	"КоличествоКадровВидеоВыполненияТестов": 5,
 	"КомандаЗаписиВидеоВыполненияТестов": "ffmpeg",
-	"ЗагрузкаФичПриОткрытии": 0,
+	"ЗагрузкаФичПриОткрытии": 3,
 	"ГенерироватьУФ": true,
 	"СоздаватьОбластиПриГенерацииКода": true,
 	"ВыводитьТекстМодуляВместоПерегенерацииEPF": false,
@@ -104,7 +104,8 @@
 	"ДелатьОтчетВоВнутреннемФормате": false,
 	"КаталогиБиблиотек": [
 		"X:\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\vanessa-automation\\features\\Libraries",
-		"X:\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\src\\lib"
+		"X:\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\src\\lib",
+		"X:\\vasiliy\\Projects\\TrainingCourses\\AutomatedTests\\src\\IRP_lib"
 	],
 	"СписокТеговИсключение": [
 		"IgnoreOnCIMainBuild"
