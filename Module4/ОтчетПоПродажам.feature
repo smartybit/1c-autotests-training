@@ -2,7 +2,7 @@
 
 @tree
 
-Функционал: <описание фичи>
+Функционал: Отчет по продажам
 
 Как Менеджер по продажам я хочу
 построить отчет D2001 Продажи для предопределенных документов продажи,
@@ -11,7 +11,7 @@
 Контекст:
 	Дано Я запускаю сценарий открытия TestClient или подключаю уже существующий
 
-Сценарий: 040020 - Формирование отчета по продажам для предопределенных документов продажи
+Сценарий: 040020 - подготовка данных для отчета по продажам из предопределенных документов продажи
 * подготовка данных для заказа
 	Когда экспорт основных данных
 
@@ -23,10 +23,15 @@
 		| 'e1cib/data/Catalog.RowIDs?ref=ac4df05e5066276211ecfe9d067120b9' | 'False'        | 3      | '1e9020b2-c5fe-4e19-ab8a-945da159f2c7' | 'e1cib/data/Catalog.Agreements?ref=ac4df05e5066276211ecfe9d067120b8' | 'e1cib/data/Catalog.Companies?ref=b762b13668d0905011eb7663e35d7964' | 'e1cib/data/Catalog.Currencies?ref=b762b13668d0905011eb7663e35d795f' | 'e1cib/data/Catalog.Companies?ref=b762b13668d0905011eb767f10805e27' | 'e1cib/data/Catalog.Partners?ref=b762b13668d0905011eb7663e35d794f' | 'True'                 | 'e1cib/data/Catalog.Stores?ref=b762b13668d0905011eb76684b9f6862' | 'e1cib/data/Catalog.Units?ref=b762b13668d0905011eb76684b9f687b' | 'e1cib/data/Catalog.ItemKeys?ref=b762b13668d0905011eb76684b9f687e' | ''       | 'e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120bb' | '1e9020b2-c5fe-4e19-ab8a-945da159f2c7' | ''                  | ''            | ''              | 'Enum.ShipmentConfirmationTransactionTypes.Sales' | 'Enum.GoodsReceiptTransactionTypes.ReturnFromCustomer' | ''                | ''          | ''                   | ''                 | ''                   | 'False'                    | ''                  |
 		| 'e1cib/data/Catalog.RowIDs?ref=ac4df05e5066276211ecfe9d067120ba' | 'False'        | 4      | 'd0b7eec5-02e2-450f-ba18-9b1dd2a63f83' | 'e1cib/data/Catalog.Agreements?ref=ac4df05e5066276211ecfe9d067120b8' | 'e1cib/data/Catalog.Companies?ref=b762b13668d0905011eb7663e35d7964' | 'e1cib/data/Catalog.Currencies?ref=b762b13668d0905011eb7663e35d795f' | 'e1cib/data/Catalog.Companies?ref=b762b13668d0905011eb767f10805e27' | 'e1cib/data/Catalog.Partners?ref=b762b13668d0905011eb7663e35d794f' | 'True'                 | 'e1cib/data/Catalog.Stores?ref=b762b13668d0905011eb76684b9f6862' | 'e1cib/data/Catalog.Units?ref=b762b13668d0905011eb76684b9f687b' | 'e1cib/data/Catalog.ItemKeys?ref=b762b13668d0905011eb766bf96b274f' | ''       | 'e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120bb' | 'd0b7eec5-02e2-450f-ba18-9b1dd2a63f83' | ''                  | ''            | ''              | 'Enum.ShipmentConfirmationTransactionTypes.Sales' | 'Enum.GoodsReceiptTransactionTypes.ReturnFromCustomer' | ''                | ''          | ''                   | ''                 | ''                   | 'False'                    | ''                  |
 
+* Создание вида мультивалютной аналитики
+	Когда я проверяю или создаю для плана видов характеристик "CurrencyMovementType" объекты:
+		| 'Ref'                                                                                             | 'DeletionMark' | 'Currency'                                                           | 'Source'                                                                      | 'Type'                        | 'DeferredCalculation' | 'Description_en'            | 'Description_hash' | 'Description_ru' | 'Description_tr' |
+		| 'e1cib/data/ChartOfCharacteristicTypes.CurrencyMovementType?ref=ac4df05e5066276211ecfe9d067120b7' | 'False'        | 'e1cib/data/Catalog.Currencies?ref=b762b13668d0905011eb7663e35d795f' | 'e1cib/data/Catalog.IntegrationSettings?ref=b762b13668d0905011eb7663e35d7966' | 'Enum.CurrencyType.Agreement' | 'False'               | 'Settlements in Euro'       | ''                 | 'Расчеты в Евро' | ''               |
+
 * Создание соглашения в Евро
 	Когда я проверяю или создаю для справочника "Agreements" объекты:
-		| 'Ref'                                                                | 'DeletionMark' | 'Code' | 'Number'  | 'Date'               | 'PartnerSegment'                                                          | 'Partner'                                                          | 'Company'                                                           | 'PriceType'                                                          | 'ItemSegment' | 'StartUsing'         | 'EndOfUse'           | 'ManagerSegment' | 'PriceIncludeTax' | 'DaysBeforeDelivery' | 'Store'                                                          | 'Type'                         | 'LegalName' | 'CurrencyMovementType'                                                                            | 'ApArPostingDetail'                          | 'StandardAgreement'                                                  | 'Kind'                         | 'UseCreditLimit' | 'CreditLimitAmount' | 'PaymentTerm'                                                              | 'Description_en'                                                      | 'Description_hash' | 'Description_ru'      | 'Description_tr' |		
-		| 'e1cib/data/Catalog.Agreements?ref=ac4df05e5066276211ecfe9d067120b8' | 'False'        | 10     | '123456'  | '01.01.2021 0:00:00' | 'e1cib/data/Catalog.PartnerSegments?ref=b762b13668d0905011eb76684b9f6864' | ''                                                                 | 'e1cib/data/Catalog.Companies?ref=b762b13668d0905011eb7663e35d7964' | 'e1cib/data/Catalog.PriceTypes?ref=b762b13668d0905011eb76684b9f6866' | ''            | '01.01.2021 0:00:00' | '01.01.0001 0:00:00' | ''               | 'True'            |                      | 'e1cib/data/Catalog.Stores?ref=b762b13668d0905011eb76684b9f6862' | 'Enum.AgreementTypes.Customer' | ''          | 'e1cib/data/ChartOfCharacteristicTypes.CurrencyMovementType?ref=ac4df05e5066276211ecfe9d067120b7' | 'Enum.ApArPostingDetail.ByDocuments'         | ''                                                                   | 'Enum.AgreementKinds.Regular'  | 'True'           | 5000                | 'e1cib/data/Catalog.PaymentSchedules?ref=b762b13668d0905011eb76684b9f686c' | 'Соглашение с клиентами EUR (расчет по документам + кредитный лимит)' | ''                 | 'Соглашение в рублях' | ''               |
+		| 'Ref'                                                                | 'DeletionMark' | 'Code' | 'Number' | 'Date'               | 'PartnerSegment'                                                          | 'Partner' | 'Company'                                                           | 'PriceType'                                                          | 'ItemSegment' | 'StartUsing'         | 'EndOfUse'           | 'ManagerSegment' | 'PriceIncludeTax' | 'DaysBeforeDelivery' | 'Store'                                                          | 'Type'                         | 'LegalName' | 'CurrencyMovementType'                                                                            | 'ApArPostingDetail'                  | 'StandardAgreement' | 'Kind'                        | 'UseCreditLimit' | 'CreditLimitAmount' | 'PaymentTerm'                                                              | 'Description_en'                                                      | 'Description_hash' | 'Description_ru'                                                      | 'Description_tr' |
+		| 'e1cib/data/Catalog.Agreements?ref=ac4df05e5066276211ecfe9d067120b8' | 'False'        | 10     | '555656' | '01.01.2021 0:00:00' | 'e1cib/data/Catalog.PartnerSegments?ref=b762b13668d0905011eb76684b9f6864' | ''        | 'e1cib/data/Catalog.Companies?ref=b762b13668d0905011eb7663e35d7964' | 'e1cib/data/Catalog.PriceTypes?ref=b762b13668d0905011eb76684b9f6866' | ''            | '01.01.2021 0:00:00' | '01.01.0001 0:00:00' | ''               | 'True'            |                      | 'e1cib/data/Catalog.Stores?ref=b762b13668d0905011eb76684b9f6862' | 'Enum.AgreementTypes.Customer' | ''          | 'e1cib/data/ChartOfCharacteristicTypes.CurrencyMovementType?ref=ac4df05e5066276211ecfe9d067120b7' | 'Enum.ApArPostingDetail.ByDocuments' | ''                  | 'Enum.AgreementKinds.Regular' | 'True'           | 5000                | 'e1cib/data/Catalog.PaymentSchedules?ref=b762b13668d0905011eb76684b9f686c' | 'Соглашение с клиентами EUR (расчет по документам + кредитный лимит)' | ''                 | 'Соглашение с клиентами EUR (расчет по документам + кредитный лимит)' | ''               |
 
 * Создание объектов для документа SalesInvoice в июне 2020 года
 // рассчитываем, что в обазе это будут единственные документы, датированные этим месяцем
@@ -62,8 +67,8 @@
 
 	И я перезаполняю для объекта табличную часть "PaymentTerms":
 		| 'Ref'                                                                   | 'Date'               | 'ProportionOfPayment' | 'DuePeriod' | 'Amount' | 'CalculationType'                          |
-		| 'e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120b6' | '15.07.2022 0:00:00' | 100                   | 7           | 390      | 'Enum.CalculationTypes.PostShipmentCredit' |
-		| 'e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120bb' | '15.07.2022 0:00:00' | 100                   | 7           | 390      | 'Enum.CalculationTypes.PostShipmentCredit' |
+		| 'e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120b6' | '15.07.2020 0:00:00' | 100                   | 7           | 390      | 'Enum.CalculationTypes.PostShipmentCredit' |
+		| 'e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120bb' | '15.07.2020 0:00:00' | 100                   | 7           | 390      | 'Enum.CalculationTypes.PostShipmentCredit' |
 
 	И я перезаполняю для объекта табличную часть "RowIDInfo":
 		| 'Ref'                                                                   | 'Key'                                  | 'RowID'                                | 'Quantity' | 'Basis' | 'CurrentStep' | 'NextStep'                                    | 'RowRef'                                                         | 'BasisKey' |
@@ -73,3 +78,110 @@
 		| 'e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120bb' | 'd0b7eec5-02e2-450f-ba18-9b1dd2a63f83' | 'd0b7eec5-02e2-450f-ba18-9b1dd2a63f83' | 1          | ''      | ''            | 'e1cib/data/Catalog.MovementRules?refName=SC' | 'e1cib/data/Catalog.RowIDs?ref=ac4df05e5066276211ecfe9d067120ba' | ''         |
 
 * проведение созданных документов
+	Когда Я открываю навигационную ссылку "e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120b6"
+	Тогда открылось окно 'Реализация товаров и услуг * от *'
+	И я нажимаю на кнопку с именем 'FormPostAndClose'
+	И я жду закрытия окна 'Реализация товаров и услуг * от *' в течение 5 секунд
+
+	Когда Я открываю навигационную ссылку "e1cib/data/Document.SalesInvoice?ref=ac4df05e5066276211ecfe9d067120bb"
+	Тогда открылось окно 'Реализация товаров и услуг * от *'
+	И я нажимаю на кнопку с именем 'FormPostAndClose'
+	И я жду закрытия окна 'Реализация товаров и услуг * от *' в течение 5 секунд
+
+Сценарий: 040030 - построение отчета в рублях
+* формирование отчета о продажах в рублях
+	Когда Я открываю навигационную ссылку "e1cib/app/Report.D2001_Sales"
+	Когда открылось окно 'D2001 Продажи'
+
+* установка периода отчета
+	И я нажимаю на кнопку с именем 'FormChangeVariant'
+	Тогда открылось окно 'Вариант "Default" отчета "D2001 Продажи"'
+	И в таблице "SettingsComposerSettingsDataParameters" я перехожу к строке:
+		| 'Параметр' |
+		| 'Период'   |
+	И в таблице "SettingsComposerSettingsDataParameters" я активизирую поле с именем "SettingsComposerSettingsDataParametersStartDate"
+	И в таблице "SettingsComposerSettingsDataParameters" в поле с именем 'SettingsComposerSettingsDataParametersStartDate' я ввожу текст '01.07.2020  0:00:00'
+	И в таблице "SettingsComposerSettingsDataParameters" я завершаю редактирование строки
+	И в таблице "SettingsComposerSettingsDataParameters" я активизирую поле с именем "SettingsComposerSettingsDataParametersEndDate"
+	И в таблице "SettingsComposerSettingsDataParameters" в поле с именем 'SettingsComposerSettingsDataParametersEndDate' я ввожу текст '31.07.2020 23:59:59'
+	И в таблице "SettingsComposerSettingsDataParameters" я завершаю редактирование строки
+
+* установка значения значения предопределенного отобора по виду валютной аналитики
+	И я перехожу к закладке с именем "FilterPage"
+	И в таблице "SettingsComposerSettingsFilter" я перехожу к строке:
+		| 'Поле'                         |
+		| 'Вид мультивалютной аналитики' |
+	И в таблице "SettingsComposerSettingsFilter" я нажимаю кнопку выбора у реквизита с именем "SettingsComposerSettingsFilterRightValue"
+	Тогда открылось окно 'Виды мультивалютной аналитики'
+	И в таблице "List" я перехожу к строке:
+		| 'Ссылка'                       |
+		| 'ru наименование не заполнено' |
+	И я нажимаю на кнопку с именем 'FormChoose'		
+	Тогда открылось окно 'Вариант "Default" отчета "D2001 Продажи"'
+	И в таблице "SettingsComposerSettingsFilter" я завершаю редактирование строки
+* добавление отобора по организации "Собственная компания 1"
+	И в таблице "SettingsComposerSettingsFilter" я нажимаю на кнопку с именем 'SettingsComposerSettingsFilterAddFilterItem'
+	И в таблице "SettingsComposerSettingsFilter" из выпадающего списка с именем "SettingsComposerSettingsFilterLeftValue" я выбираю точное значение 'Организация'
+	И я перехожу к следующему реквизиту
+	И в таблице "SettingsComposerSettingsFilter" я нажимаю кнопку выбора у реквизита с именем "SettingsComposerSettingsFilterRightValue"
+	Когда открылось окно 'Организации'
+	И в таблице "List" я перехожу к строке:
+		| 'Наименование'           |
+		| 'Собственная компания 1' |
+	И я нажимаю на кнопку с именем 'FormChoose'
+	Тогда открылось окно 'Вариант "Default" отчета "D2001 Продажи"'
+	И в таблице "SettingsComposerSettingsFilter" я завершаю редактирование строки
+	И я нажимаю на кнопку с именем 'FormEndEdit'	
+	И я нажимаю на кнопку с именем 'FormGenerate'
+	И я жду когда в табличном документе "Result" заполнится ячейка "R12C2" в течение 20 секунд
+		
+	Тогда Табличный документ 'Result' равен макету "Module4\КонтрольныеДанные\ПродажиВРублях"
+
+Сценарий: 040040 - построение отчета в Евро
+	Когда я закрываю все окна клиентского приложения
+* открытие формы отчета и переход к настройкам варианта
+	Когда Я открываю навигационную ссылку "e1cib/app/Report.D2001_Sales"
+	И открылось окно 'D2001 Продажи'
+	И я нажимаю на кнопку с именем 'FormChangeVariant'
+	Тогда открылось окно 'Вариант "Default" отчета "D2001 Продажи"'
+
+* установка периода отчета	
+	И в таблице "SettingsComposerSettingsDataParameters" я перехожу к строке:
+		| 'Параметр' |
+		| 'Период'   |
+	И в таблице "SettingsComposerSettingsDataParameters" я активизирую поле с именем "SettingsComposerSettingsDataParametersStartDate"
+	И в таблице "SettingsComposerSettingsDataParameters" в поле с именем 'SettingsComposerSettingsDataParametersStartDate' я ввожу текст '01.07.2020  0:00:00'
+	И в таблице "SettingsComposerSettingsDataParameters" я завершаю редактирование строки
+	И в таблице "SettingsComposerSettingsDataParameters" я активизирую поле с именем "SettingsComposerSettingsDataParametersEndDate"
+	И в таблице "SettingsComposerSettingsDataParameters" в поле с именем 'SettingsComposerSettingsDataParametersEndDate' я ввожу текст '31.07.2020 23:59:59'
+	И в таблице "SettingsComposerSettingsDataParameters" я завершаю редактирование строки
+
+* установка вида мультивалютной аналитики в Евро
+	И я перехожу к закладке с именем "FilterPage"
+	И в таблице "SettingsComposerSettingsFilter" я перехожу к строке:
+		| 'Поле'                         |
+		| 'Вид мультивалютной аналитики' |
+	И в таблице "SettingsComposerSettingsFilter" я нажимаю кнопку выбора у реквизита с именем "SettingsComposerSettingsFilterRightValue"
+	Тогда открылось окно 'Виды мультивалютной аналитики'
+	И в таблице "List" я перехожу к строке:
+		| 'Ссылка'         |
+		| 'Расчеты в Евро' |
+	И в таблице "List" я выбираю текущую строку
+	И в таблице "SettingsComposerSettingsFilter" я завершаю редактирование строки
+* добавление отобора по организации "Собственная компания 1"
+	И в таблице "SettingsComposerSettingsFilter" я нажимаю на кнопку с именем 'SettingsComposerSettingsFilterAddFilterItem'
+	И в таблице "SettingsComposerSettingsFilter" из выпадающего списка с именем "SettingsComposerSettingsFilterLeftValue" я выбираю точное значение 'Организация'
+	И я перехожу к следующему реквизиту
+	И в таблице "SettingsComposerSettingsFilter" я нажимаю кнопку выбора у реквизита с именем "SettingsComposerSettingsFilterRightValue"
+	Когда открылось окно 'Организации'
+	И в таблице "List" я перехожу к строке:
+		| 'Наименование'           |
+		| 'Собственная компания 1' |
+	И я нажимаю на кнопку с именем 'FormChoose'
+
+	И я нажимаю на кнопку с именем 'FormEndEdit'
+	Тогда открылось окно 'D2001 Продажи'
+* проверка данных отчета	
+	И я нажимаю на кнопку с именем 'FormGenerate'
+	Тогда Табличный документ 'Result' равен макету "Module4\КонтрольныеДанные\ПродажиВЕвро"	
+		
